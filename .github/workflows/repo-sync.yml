@@ -1,0 +1,19 @@
+name: 上游合并🔄
+
+on:
+  schedule: 
+  - cron: "0 2 */20 * *" # every 20 days. set to whatever interval you like
+  workflow_dispatch:
+jobs:
+  repo-sync:
+    name: Repo Sync
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - uses: repo-sync/github-sync@v2
+      name: 🔄同步上游repo到分支
+      with:
+        source_repo: ${{ vars.SOURCE_REPO }}
+        source_branch: gh-pages
+        destination_branch: upstream
+        github_token: ${{ secrets.GH_TOKEN }}

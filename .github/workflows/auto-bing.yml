@@ -15,10 +15,10 @@ jobs:
     steps:
     # checkout
     - name: checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@main
     # setup nodejs
     - name: Use Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@main
       with:
         node-version: 20.x
     - run: node ./assets/js/bing.js
